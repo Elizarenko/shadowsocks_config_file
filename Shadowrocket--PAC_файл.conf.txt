@@ -1,59 +1,74 @@
-# Удобный мануал по файлу
-# https://mishatugushev.ru/blog/?go=all/shadowrocket-seamless-ios/
-
-# Общие настройки
+# Shadowrocket: 2024-11-09 19:40:57
 [General]
-
-# Настройка обхода включена 
-bypass-system = true 
-
+# Настройка обхода включена
+bypass-system = true
 # Пропуск специфических ip-адресов и доменов в зоне ru. Они будут идти без VPN
 skip-proxy = 127.0.0.1, 192.168.0.0/16, 10.0.0.0/8, 172.16.0.0/12, localhost, *.local, captive.apple.com
-
 # Исключение диапазонов для обхода
-bypass-tun = 10.0.0.0/8, 100.64.0.0/10, 127.0.0.0/8, 169.254.0.0/16, 172.16.0.0/12, 192.0.0.0/24, 192.0.2.0/24, 192.88.99.0/24, 192.168.0.0/16, 198.18.0.0/15, 198.51.100.0/24, 203.0.113.0/24, 224.0.0.0/4, 255.255.255.255/32 
-
+bypass-tun = 10.0.0.0/8, 100.64.0.0/10, 127.0.0.0/8, 169.254.0.0/16, 172.16.0.0/12, 192.0.0.0/24, 192.0.2.0/24, 192.88.99.0/24, 192.168.0.0/16, 198.18.0.0/15, 198.51.100.0/24, 203.0.113.0/24, 224.0.0.0/4, 255.255.255.255/32
 # ДНС сервера гугловые, но при этом если они не будут отвечать, то запрос будет идти через системные, через вашего провайдера
 dns-server = 8.8.8.8, 8.8.4.4, https://dns.adguard.com/dns-query
 fallback-dns-server = system
-
 # Адрес ручного обновления конфига. Автоматическое обновление не поддерживается
 # отключил пока что
 ## update-url = https://raw.githubusercontent.com/misha-tgshv/shadowrocket-configuration-file/main/template-ios-ru.conf
-
- 
 # Правила для работы трафика
 # https://mishatugushev.ru/blog/?go=all/shadowrocket-seamless-ios/#proxy-rule
-[Rule]
-# Custom domain
-DOMAIN-SUFFIX,instagram.com,Proxy
-DOMAIN-SUFFIX,facebook.com,Proxy
-DOMAIN-SUFFIX,openai.com,Proxy
-DOMAIN-SUFFIX,intel.com,Proxy
 
+[Rule]
+# Сайт Влада
+DOMAIN-SUFFIX,extreme-look.ru,DIRECT
+# Discord
+DOMAIN-SUFFIX,discord.com,PROXY
+DOMAIN-SUFFIX,gateway.discord.gg,PROXY
+DOMAIN-SUFFIX,cdn.discordapp.com,PROXY
+DOMAIN-SUFFIX,discordapp.net,PROXY
+DOMAIN-SUFFIX,discordapp.com,PROXY
+DOMAIN-SUFFIX,discord.gg,PROXY
+DOMAIN-SUFFIX,media.discordapp.net,PROXY
+DOMAIN-SUFFIX,images-ext-1.discordapp.net,PROXY
+DOMAIN-SUFFIX,www.discord.com,PROXY
+DOMAIN-SUFFIX,www.discord.app,PROXY
+DOMAIN-SUFFIX,discord.app,PROXY
+DOMAIN-SUFFIX,*.discord.com,PROXY
+DOMAIN-SUFFIX,*.discord.gg,PROXY
+DOMAIN-SUFFIX,*.discordapp.com,PROXY
+DOMAIN-SUFFIX,*.discordapp.net,PROXY
+DOMAIN-SUFFIX,discord.media,PROXY
+DOMAIN-SUFFIX,*.discord.media,PROXY
+DOMAIN-SUFFIX,discordcdn.com,PROXY
+DOMAIN-SUFFIX,discord.dev,PROXY
+DOMAIN-SUFFIX,discord.new,PROXY
+DOMAIN-SUFFIX,discord.gift,PROXY
+DOMAIN-SUFFIX,discordstatus.com,PROXY
+DOMAIN-SUFFIX,dis.gd,PROXY
+DOMAIN-SUFFIX,discord.co,PROXY
+DOMAIN-SUFFIX,discord-attachments-uploads-prd.storage.googleapis.com,PROXY
+# Custom domain
+DOMAIN-SUFFIX,instagram.com,PROXY
+DOMAIN-SUFFIX,facebook.com,PROXY
+DOMAIN-SUFFIX,openai.com,PROXY
+DOMAIN-SUFFIX,intel.com,PROXY
 # NAME: Proxy Youtube
 # AUTHOR: Misha Tugushev
 # REPO: https://github.com/misha-tgshv/shadowrocket-configuration-file
 # UPDATED: 20-08-2024 03:23:37
-DOMAIN-SUFFIX,ggpht.com,Proxy
-DOMAIN-SUFFIX,googlevideo.com,Proxy
-DOMAIN-SUFFIX,youtu.be,Proxy
-DOMAIN-SUFFIX,yt.be,Proxy
-DOMAIN-SUFFIX,i.ytimg.com,Proxy
-DOMAIN-SUFFIX,ytimg.com,Proxy
-DOMAIN-SUFFIX,yt3.ggpht.com,Proxy
-DOMAIN-SUFFIX,youtube.googleapis.com,Proxy
-DOMAIN-KEYWORD,youtube,Proxy
-
+DOMAIN-SUFFIX,ggpht.com,PROXY
+DOMAIN-SUFFIX,googlevideo.com,PROXY
+DOMAIN-SUFFIX,youtu.be,PROXY
+DOMAIN-SUFFIX,yt.be,PROXY
+DOMAIN-SUFFIX,i.ytimg.com,PROXY
+DOMAIN-SUFFIX,ytimg.com,PROXY
+DOMAIN-SUFFIX,yt3.ggpht.com,PROXY
+DOMAIN-SUFFIX,youtube.googleapis.com,PROXY
+DOMAIN-KEYWORD,youtube,PROXY
 # Массовое правило, где подключаются список доменов, для которых будет работать VPN
 RULE-SET,https://raw.githubusercontent.com/misha-tgshv/shadowrocket-configuration-file/main/proxy.list,PROXY
-
 # Опционально. Если домен в базе Geolite2 из РФ, то трафик идет напрямую
 GEOIP,RU,DIRECT
-
 # Последнее правило. Оно определяет политику по умолчанию для запросов, которые не соответствуют каким-либо другим правилам. В данном случае трафик идет напрямую без VPN
-FINAL,DIRECT
- 
 # Локальный хост
+FINAL,DIRECT
+
 [Host]
 localhost = 127.0.0.1
